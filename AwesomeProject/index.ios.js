@@ -9,43 +9,18 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View,
-  Button,
-  Alert
+  View
 } from 'react-native';
 
 export default class AwesomeProject extends Component {
-    onPress() {
-        Alert.alert(
-            'Alert Title',
-            'My Alert Msg',
-            [
-                {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
-                {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                {text: 'OK', onPress: () => console.log('OK Pressed')},
-            ]
-        )
-    }
+    
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native 2017 Lorgio Trinidad!
-        </Text>
-        <Button
-            onPress={this.onPress}
-            title="Learn More"
-            color="#841584"
-            accessibilityLabel="Learn more about this purple button"
-        />
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <View style={[styles.box, styles.red]} />
+        <View style={[styles.box, styles.green]} />
+        <View style={[styles.box, styles.blue]} /> 
       </View>
     );
   }
@@ -54,20 +29,24 @@ export default class AwesomeProject extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: 'row',
     backgroundColor: '#F5FCFF',
+    flexWrap: 'wrap',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  box: {
+      width: 200,
+      height: 200,
+      backgroundColor: 'black',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  red: {
+      backgroundColor: 'red',
   },
+  green: {
+      backgroundColor: 'green',
+  },
+  blue: {
+      backgroundColor: 'blue',
+  }
 });
 
 AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
