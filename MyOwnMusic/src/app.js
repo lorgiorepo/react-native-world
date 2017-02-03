@@ -9,28 +9,23 @@ import {
   AppRegistry,
   StyleSheet,
   View,
+  Platform,
 } from 'react-native';
 
-import ArtistList from './ArtistList';
-import { getArtists } from './api-client';
+import {Scene, Router} from 'react-native-router-flux';
 
-export default class MyOwnMusic extends Component {
-  state = {
-    artists: []
-  }
+import HomeView from './HomeView';
+import ArtistDetailView from './ArtistDetailView';
 
-  componentDidMount() {
-      getArtists().then((data) => this.setState({ artists: data }))
-  }
-  
+class MyOwnMusic extends Component {
+
   render() {
-    const artists = this.state.artists;
+      const isAndroid = Platform.os === 'android';
 
-    return (
-        <View style={ styles.container }>
-            <ArtistList artists={ artists }/>
-        </View>
-    );
+    return <Router>
+        <Scene key="home" component={HomeView} hideNavBar={true}/>
+        <Scene key="artistDetail" component={ArtistDetailView} hideNavBar={isAndroid} />
+    </Router>
   }
 }
 
