@@ -11,6 +11,7 @@ import {
   Text,
   View,
   Image,
+  ScrollView,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -26,13 +27,13 @@ export default class MyOwnMusic extends Component {
     }
 
     return (
-      <View style={ styles.container }>
-        <ArtistBox artist={ artist }/>
-        <ArtistBox artist={ artist }/>
-        <ArtistBox artist={ artist }/>
-        <ArtistBox artist={ artist }/>
-        <ArtistBox artist={ artist }/>
-      </View>
+      <ScrollView style={ styles.container }>
+        {
+            Array(500).fill(artist).map(artist => {
+                return <ArtistBox artist={ artist }/>
+            })
+        }
+      </ScrollView>
     );
   }
 }
